@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سامانه مدارس</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+  <main class="flex-1 px-4 py-8 lg:px-4 lg:py-8 order-2 w-full overflow-x-hidden">
+
+    <div class="flex lg:hidden items-center justify-between mb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
+          <img src="img/teacher.png" alt="لوگو" class="w-5 h-5" aria-hidden="true" />
+        </div>
+        <span class="text-blue-600 text-lg font-bold leading-none">سامانه مدارس</span>
+      </div>
+      <button id="openMenuBtn" onclick="openMenu()" type="button"
+        class="w-9 h-9 flex items-center justify-center rounded-xl text-[#3D3D3D] focus:outline-none focus:ring-2 focus:ring-[#2F66F6]"
+        aria-label="باز کردن منو">
+        <img class="w-[30px] h-[30px]" src="img/menu.png" alt="">
+      </button>
+    </div>
+
+    <section class="w-full over bg-white border border-gray-200 rounded-2xl shadow-sm px-4 lg:px-8 py-5"
+      aria-label="ثبت نام دانش آموز جدید">
+      <div class="flex lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0">
+
+        <h2 class="text-lg font-bold text-gray-700 text-right leading-snug">
+          ثبت نام دانش آموز جدید
+        </h2>
+
+        <div class="flex flex-col gap-1 items-start text-right">
+
+          <div class="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500 flex-shrink-0" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <span class="text-sm text-gray-700 font-medium">امروز</span>
+          </div>
+          <p class="text-sm text-gray-500 pr-0.5">۱۴۰۳ خرداد ۲۶</p>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="overlay" onclick="closeMenu()" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+
+  <aside id="sidebar"
+    class="bg-white w-4/5 max-w-xs lg:max-w-[330px] lg:w-full min-h-screen h-screen rounded-2xl shadow-lg flex flex-col overflow-hidden border fill-none fixed top-0 right-0 z-50 translate-x-full transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:my-8 lg:ml-8 order-1">
+
+    <div class="px-6 pt-6 pb-4">
+      <div class="flex items-center gap-3 justify-start">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
+          <img src="img/teacher.png" alt="لوگو" class="w-5 h-5" aria-hidden="true" />
+        </div>
+        <span class="text-[#3D3D3D] text-lg font-bold leading-none">سامانه مدارس</span>
+      </div>
+    </div>
+    <nav class="flex-1 px-4 pb-4 overflow-y-auto">
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-5 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/element-4.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">داشبورد</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">مدیریت دانشجویان</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#2F66F6] text-white focus:outline-none focus:ring-2 focus:ring-[#2F66F6] focus:ring-offset-2 transition-colors"
+            style="height:44px;" aria-current="page">
+            <img src="img/user-add.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">پیش ثبت نام (جدید)</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/diagram.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">در انتظار تایید</span>
+          </a>
+        </li>
+
+        <li class="relative">
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/clock.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">در صف کلاس</span>
+            <span
+              class="w-5 h-5 rounded-full bg-[#FF2D55] text-white text-[10px] font-bold flex items-center justify-center leading-none flex-shrink-0">۲</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/profile-2user.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">لیست دانشجویان فعال</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">گروه اساتید</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/calendar.png" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">مدیریت اساتید</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/Vector.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تقویم هفتگی اساتید</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">آموزش و ارزیابی</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/book.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">مدیریت کلاس ها</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/random chiz.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">حضور و غیاب</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/chart.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">نمرات</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/masg.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">نظرات و بازخورد ها</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/notification.png" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">اعلان و هشدارها</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">برنامه کارآموزی</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/profile-2user.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">کارآموزان فعال</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/user-addd.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تعریف کارآموز جدید</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/medal.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تسک ها و کارتابل</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/chart.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تاریخچه و آرشیو تسک ها</span>
+            <span
+              class="w-5 h-5 rounded-full bg-[#FF2D55] text-white text-[10px] font-bold flex items-center justify-center leading-none flex-shrink-0">۲</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/masg.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تیکت ها و اعلان ها</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/chart.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">برایند و ارزیابی</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/setting-2.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تنظیمات کارآموزی</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/setting-2.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تنظیمات</span>
+          </a>
+        </li>
+      </ul>
+
+    </nav>
+    <div class="px-4 pb-5">
+      <div class="bg-[#F5F5F5] rounded-2xl px-4 py-3 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+          <img src="img/Status Indicator.png" alt="آواتار" class="w-10 h-10" aria-hidden="true" />
+        </div>
+        <div class="flex-1 text-right">
+          <p class="text-sm font-bold text-[#3D3D3D] leading-snug">مدیر سامانه</p>
+          <p class="text-xs font-normal text-[#9CA3AF] leading-snug mt-0.5" style="direction:ltr; text-align:right;">
+            admin@schoool.com</p>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <script>
+    function openMenu() {
+      document.getElementById('sidebar').classList.remove('translate-x-full');
+      document.getElementById('overlay').classList.remove('hidden');
+    }
+    function closeMenu() {
+      document.getElementById('sidebar').classList.add('translate-x-full');
+      document.getElementById('overlay').classList.add('hidden');
+    }
+  </script>
+
+</body>
+
+</html>
