@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ایجاد کلاس جدید</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@pastedمیخوام جاهایی که تگ svg دارن رو img بزاری و تو رو که المان سر جای خودش قرار بگیره و جاش عوض نشهSVG عناصر را با تصاویر جایگزین کردSVG عناصر را با تصاویر جایگزین کردتمام SVGهای اینلاین (فلش‌های dropdown و آیکون ساعت) رو به تگ <img> تبدیل کردم، دقیقاً همون‌جایی که بودن با همون کلاس‌ها (سایز، رنگ، position و...) حفظ شده. مسیرهاشون رو گذاشتم img/chevron-down.svg و img/clock.svg — کافیه فایل‌های SVG واقعی رو با همین اسم‌ها تو پوشه img/ کنار HTML قرار بدی.Create classCode · HTML نمیتونم دانلود کنم میتونی برام کدش رو بفرستی کپی کنمکد کامل را برای کپی کردن فراهم کردکد کامل را برای کپی کردن فراهم کردالبته، بفرمایید:
+html<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ایجاد کلاس جدید</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+<style>
+  body { font-family: 'Vazirmatn', sans-serif; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db7b; border-radius: 999px; }
+</style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+  <div class="fixed inset-0 bg-slate-900/40 flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+        <h2 class="text-lg font-bold text-slate-800">ویرایش کلاس</h2>
+        <button
+          class="w-8 h-8 flex items-center justify-center bg-[#EBEBEB6B] rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">
+          <img src="img/Icon.svg" alt="">
+        </button>
+      </div>
+      <div class="px-6 py-5 space-y-5 overflow-y-auto">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">نام کلاس</label>
+          <input type="text" placeholder="Back-2005"
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">استاد مربوطه</label>
+          <div class="relative">
+            <select
+              class="w-full appearance-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>آقای زارع</option>
+              <option>خانم یعقوبی</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">منتور کلاس</label>
+          <div class="relative">
+            <select
+              class="w-full appearance-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>انتخاب منتور (بدون منتور)</option>
+              <option>عرفان مرادی</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-3">روزهای برگزاری</label>
+          <div class="flex flex-wrap gap-2" id="days">
+            <button type="button" 
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">شنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">یکشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">دوشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه
+              شنبه</button>
+            <button type="button" -
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">چهارشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">پنجشنبه</button>
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+          <div class="flex items-center gap-1.5 text-sm font-semibold text-blue-600 mb-1">
+            <img src="img/⏰.png" alt="" class="w-4 h-4" />
+            ساعت برگزاری تایم اول
+          </div>
+          <p class="text-xs text-slate-400 mb-2">انتخاب بازه زمانی (یک ساعت و نیم)</p>
+          <div class="relative">
+            <select
+              class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>انتخاب تایم اول</option>
+              <option>۰۸:۰۰ - ۰۹:۳۰</option>
+              <option>۱۰:۰۰ - ۱۱:۳۰</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+          <div class="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 mb-1">
+            <img src="img/⏰.png" alt="" class="w-4 h-4" />
+            ساعت برگزاری تایم دوم (اختیاری)
+          </div>
+          <p class="text-xs text-slate-400 mb-2">انتخاب بازه زمانی (یک ساعت و نیم)</p>
+          <div class="relative">
+            <select
+              class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>بدون تایم دوم (خالی)</option>
+              <option>۱۳:۰۰ - ۱۴:۳۰</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">ظرفیت کلاس (تعداد کل عضو پذیرفته شده)</label>
+          <input type="number" value="8"
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">توضیحات</label>
+          <textarea rows="3" placeholder="توضیحات تکمیلی درباره کلاس..."
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/50">
+        <button class="px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-100 transition">انصراف</button>
+        <button class="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition">ذخیره تغییرات </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.day-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('bg-blue-600');
+        btn.classList.toggle('text-white');
+        btn.classList.toggle('border-blue-600');
+        btn.classList.toggle('bg-slate-50');
+        btn.classList.toggle('text-slate-600');
+        btn.classList.toggle('border-slate-200');
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدیریت دانش آموزان دوره</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          vazir: ['Vazirmatn', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="font-vazir bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div id="studentModal" dir="rtl" class="w-full max-w-xl bg-white rounded-2xl shadow-lg flex flex-col max-h-[90vh]">
+    <div class="flex flex-row-reverse items-start justify-between px-6 pt-6 pb-4">
+      <button onclick="document.getElementById('studentModal').style.display='none'"
+        class="w-9 h-9 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-gray-200 cursor-pointer transition-colors">
+        <img src="img/zabdar.png" alt="" class="w-4 h-4">
+      </button>
+
+      <div class="text-right">
+        <h2 class="text-lg font-bold text-gray-900">مدیریت دانش آموزان دوره</h2>
+        <span class="text-sm font-medium text-blue-600">Back-2001</span>
+      </div>
+    </div>
+    <div class="border-t border-gray-200"></div>
+    <div class="flex items-center justify-between px-6 py-4">
+      <img src="img/profile-2user.svg" alt="" class="w-5 h-5">
+      <span class="text-sm font-medium text-gray-700">دانش آموزان این دوره (۱۱)</span>
+    </div>
+    <div class="overflow-y-auto px-6 pb-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full">
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۱</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۲</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۳</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۴</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۵</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۶</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۷</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۸</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between py-4">
+        <button onclick="this.closest('.flex').remove()" class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+        <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+        <div class="flex flex-row-reverse items-center gap-2">
+          <span class="text-sm font-medium text-gray-800">کاربر۹</span>
+          <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="border-t border-gray-200 px-6 pt-4 pb-6">
+      <button onclick="document.getElementById('studentModal').style.display='none'"
+        class="w-full py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium cursor-pointer transition-colors">
+        بستن پنجره
+      </button>
+    </div>
+
+  </div>
+
+</body>
+</html>

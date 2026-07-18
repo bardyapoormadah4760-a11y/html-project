@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سامانه مدارس | مدیریت کلاس‌ها</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Vazirmatn', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              600: '#2F66F6',
+              700: '#2554d1',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-3 sm:p-5 flex font-sans text-slate-800 text-sm overflow-x-hidden">
+  <main class="flex-1 px-4 pb-6 lg:px-6 lg:pb-8 order-2 w-full overflow-x-hidden space-y-4">
+    <div class="flex lg:hidden items-center justify-between mb-2">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
+          <img src="img/teacher.png" alt="لوگو" class="w-5 h-5" aria-hidden="true" />
+        </div>
+        <span class="text-brand-600 text-lg font-bold leading-none">سامانه مدارس</span>
+      </div>
+      <button id="openMenuBtn" onclick="openMenu()" type="button"
+        class="w-9 h-9 flex items-center justify-center rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
+        aria-label="باز کردن منو">
+        <img class="w-[30px] h-[30px]" src="img/menu.png" alt="">
+      </button>
+    </div>
+    <section class="w-full bg-white border border-gray-200 rounded-2xl shadow-lg px-4 lg:px-8 py-5">
+      <div class="flex lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0">
+        <h2 class="text-lg font-bold text-gray-700 text-right leading-snug">
+          مدیریت کلاس ها
+        </h2>
+        <div class="flex flex-col gap-1 items-start text-right">
+          <div class="flex items-center gap-1.5">
+            <img src="img/calendar.svg" alt="">
+            <span class="text-sm text-gray-700 font-medium">امروز</span>
+          </div>
+          <p class="text-sm text-gray-500 pr-0.5">۱۴۰۳ خرداد ۲۶</p>
+        </div>
+      </div>
+    </section>
+    <div class="flex items-center justify-between gap-3 lg:gap-0">
+      <h2 class="font-bold text-lg text-slate-800">لیست کلاس‌های آموزشی</h2>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="openExcelModal()"
+          class="flex items-center justify-center lg:justify-start gap-1.5 text-slate-500 text-xs bg-white border border-slate-200 rounded-lg hover:bg-slate-50 w-9 h-9 lg:w-auto lg:h-auto lg:px-3 lg:py-2">
+          <img src="img/calendar.svg" class="block lg:hidden w-4 h-4" alt="">
+          <img src="img/frame.svg" class="hidden lg:block w-3.5 h-3.5" alt="">
+          <span class="hidden lg:inline">خروجی اکسل</span>
+        </button>
+        <button type="button" onclick="openExcelModal()"
+          class="flex items-center justify-center lg:justify-start gap-1.5 text-slate-500 text-xs bg-white border border-slate-200 rounded-lg hover:bg-slate-50 w-9 h-9 lg:w-auto lg:h-auto lg:px-3 lg:py-2">
+          <img src="img/More_Vertical.svg" class="block lg:hidden w-4 h-4" alt="">
+          <img src="img/export.svg" class="hidden lg:block w-3.5 h-3.5" alt="">
+          <span class="hidden lg:inline">وارد کردن از اکسل</span>
+        </button>
+        <button type="button" id="openCreateClassModalBtn" onclick="openCreateClassModal()"
+          class="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 active:scale-95 transition text-white text-sm font-medium fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full shadow-lg lg:static lg:z-auto lg:w-auto lg:h-auto lg:rounded-lg lg:shadow-none lg:px-4 lg:py-2.5">
+          <img src="img/add.svg" class="w-5 h-5 lg:w-4 lg:h-4" alt="">
+          <span class="hidden lg:inline">ایجاد کلاس جدید</span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="bg-white shadow-lg rounded-xl border flex-row-reverse border-slate-200 p-3 hidden lg:flex items-center gap-2 flex-wrap">
+      <button
+        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
+        نام کلاس/الفبا-صعودی
+        <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
+      </button>
+      <button class="text-slate-400 p-2">
+        <img src="img/arrow-3.svg" class="w-4 h-4" alt="">
+      </button>
+      <button
+        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
+        همه ی روز ها
+        <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
+      </button>
+      <button class="text-slate-400 p-2">
+        <img src="img/calendar.svg" class="w-4 h-4" alt="">
+      </button>
+      <button type="button" id="openTeachersModalBtn" onclick="openTeachersModal()"
+        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
+        همه‌ی اساتید و منتور‌ها
+        <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
+      </button>
+      <button class="text-slate-400 p-2">
+        <img src="img/gif.svg" class="w-4 h-4" alt="">
+      </button>
+      <div class="w-full sm:flex-1 sm:min-w-[180px] relative">
+        <input type="text" placeholder="جستجو(نام کلاس-استاد...)"
+          class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg py-2 pe-3 ps-8 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-600/20">
+        <img src="img/search-normal.svg" class="w-3.5 h-3.5 text-slate-400 absolute start-3 top-1/2 -translate-y-1/2"
+          alt="">
+      </div>
+    </div>
+    <div class="relative flex lg:hidden" id="mobileTeacherFilterWrap">
+      <button type="button" id="mobileTeacherFilterBtn" onclick="toggleMobileTeacherDropdown()" aria-expanded="false"
+        aria-controls="mobileTeacherDropdownPanel"
+        class="w-full flex items-center justify-start gap-1.5 text-xs text-slate-600 bg-white shadow-lg border border-slate-200 px-3 py-2.5 rounded-xl">
+        <img id="mobileTeacherFilterArrow" src="img/arrow-down.svg" class="w-3 h-3 transition-transform" alt="">
+        <span>همه‌ی اساتید و منتور‌ها</span>
+      </button>
+      <div id="mobileTeacherDropdownPanel"
+        class="hidden absolute top-full inset-x-0 mt-1.5 z-20 bg-white rounded-xl border border-slate-200 shadow-lg overflow-hidden">
+        <div class="flex items-center justify-between gap-1.5 px-3 py-2.5 border-b border-slate-100">
+          <span class="flex items-center gap-1.5 text-xs font-medium text-slate-600">
+            همه‌ی اساتید و منتور‌ها
+            <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
+          </span>
+          <button type="button" onclick="toggleMobileTeacherDropdown()" aria-label="بستن">
+            <img src="img/zabdar.png" class="w-3.5 h-3.5" alt="">
+          </button>
+        </div>
+        <div class="divide-y divide-gray-100 max-h-72 overflow-y-auto">
+          <button type="button" onclick="selectMobileTeacherFilter('teacher','خانم یعقوبی')"
+            class="w-full flex items-center justify-start gap-2.5 px-3 py-3 hover:bg-gray-50 transition-colors text-right">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background-color:#EAF2FF;">
+              <img src="img/user-add2.svg" class="w-4 h-4" alt="">
+            </span>
+            <span class="text-xs font-semibold text-blue-600">خانم یعقوبی</span>
+          </button>
+          <button type="button" onclick="selectMobileTeacherFilter('teacher','آقای بارونچیان')"
+            class="w-full flex items-center justify-start gap-2.5 px-3 py-3 hover:bg-gray-50 transition-colors text-right">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background-color:#EAF2FF;">
+              <img src="img/user-add2.svg" class="w-4 h-4" alt="">
+            </span>
+            <span class="text-xs font-semibold text-blue-600">آقای بارونچیان</span>
+          </button>
+          <button type="button" onclick="selectMobileTeacherFilter('teacher','آقای زارع')"
+            class="w-full flex items-center justify-start gap-2.5 px-3 py-3 hover:bg-gray-50 transition-colors text-right">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background-color:#EAF2FF;">
+              <img src="img/user-add2.svg" class="w-4 h-4" alt="">
+            </span>
+            <span class="text-xs font-semibold text-blue-600">آقای زارع</span>
+          </button>
+          <button type="button" onclick="selectMobileTeacherFilter('mentor','عرفان مرادی')"
+            class="w-full flex items-center justify-start gap-2.5 px-3 py-3 hover:bg-gray-50 transition-colors text-right">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background-color:#DDF9E8;">
+              <img src="img/user-add3.svg" class="w-4 h-4" alt="">
+            </span>
+            <span class="text-xs font-semibold text-emerald-600">عرفان مرادی</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="filterBackBarContainer" class="hidden">
+      <button type="button" id="filterBackBtn" onclick="showAllClasses()"
+        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg hover:bg-slate-100">
+        <img src="img/arrow-3.svg" class="w-3.5 h-3.5" alt="">
+        نمایش همه کلاس‌ها
+      </button>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4" id="classGrid">
+      <div class="bg-white rounded-xl border border-slate-200 p-4  hover:shadow-sm transition">
+        <div class="flex justify-between">
+          <div class="flex flex-col gap-2 min-w-0">
+            <div class="flex items-center gap-1.5">
+              <div class="rounded-lg w-11 h-11 bg-[#DBEAFE] flex justify-center items-center ">
+                <img src="img/book jadid.svg" alt="">
+              </div>
+              <h3 class="font-bold text-slate-800">Back-2001</h3>
+            </div>
+            <div class="text-xs">
+              <div class="flex items-center gap-1.5 text-slate-500">
+                <img src="img/teacher.png" class="w-3.5 h-3.5 text-slate-400" alt="">
+                استاد : <span class="text-slate-600">آقای بارونچیان</span>
+              </div>
+            </div>
+            <div class="text-xs">
+              <div class="flex items-center gap-1.5 text-slate-500">
+                <img src="img/profile-2user2.svg" class="w-3.5 h-3.5 text-slate-400" alt="">
+                <span class="text-slate-600">منتور : عرفان مرادی</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">توضیحاتی ثبت نشده است.</p>
+          </div>
+          <div class="flex flex-col w-full max-w-fit flex-shrink-0">
+            <div class="flex items-center flex-col gap-4 ">
+              <div class="flex flex-nowrap items-center gap-2 w-full">
+                <span
+                  class="text-[11px] w-full text-center px-2 py-1 rounded-full bg-slate-100 text-slate-500">یکشنبه</span>
+                <span
+                  class="text-[11px] w-full text-center px-2 py-1 rounded-full bg-slate-100 text-slate-500">شنبه</span>
+              </div>
+              <div class="space-y-1.5 flex flex-col items-end">
+                <div class="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 rounded-md px-2 py-1 w-fit">
+                  <img src="img/clock1.svg" class="w-3.5 h-3.5" alt="">
+                  <span>جلسه ۱ : ۱۳:۳۰ تا ۱۵:۰۰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center flex-row-reverse justify-between pt-6 mt-3 border-t border-b-gray-800 ">
+          <div class="flex items-center flex-row-reverse gap-3 text-slate-400">
+            <button class="hover:text-red-500" data-action="delete">
+              <img src="img/trash.svg" class="w-4 h-4" alt="">
+            </button>
+            <button class="hover:text-brand-600" data-action="edit">
+              <img src="img/setting-2.svg" class="w-4 h-4" alt="">
+            </button>
+            <button class="hover:text-brand-600 " data-action="students">
+              <img src="img/user-add jadid tar.png" class="w-4 h-4" alt="">
+            </button>
+          </div>
+          <a href="#" class="text-slate-500 text-xs font-medium flex items-center gap-1">
+            <img src="img/clock.svg" alt="">
+            ۳ روز
+            <img src="img/profile-2user3.svg" class="w-3.5 h-3.5" alt="">
+            ۱۱ از ۴۰ نفر
+          </a>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 p-4  hover:shadow-sm transition">
+        <div class="flex justify-between">
+          <div class="flex flex-col gap-2 min-w-0">
+            <div class="flex items-center gap-1.5">
+              <div class="rounded-lg w-11 h-11 bg-[#DBEAFE] flex justify-center items-center ">
+                <img src="img/book jadid.svg" alt="">
+              </div>
+              <h3 class="font-bold text-slate-800">Back-2005</h3>
+            </div>
+            <div class="text-xs">
+              <div class="flex items-center gap-1.5 text-slate-500">
+                <img src="img/teacher.png" class="w-3.5 h-3.5 text-slate-400" alt="">
+                استاد : <span class="text-slate-600">آقای بارونچیان</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">توضیحاتی ثبت نشده است.</p>
+          </div>
+          <div class="flex flex-col w-full max-w-fit flex-shrink-0">
+            <div class="flex items-center flex-col gap-4 ">
+              <div class="flex items-center gap-2 w-full">
+                <span class="text-[11px] w-full text-center px-2 py-1 rounded-full bg-slate-100 text-slate-500">سه
+                  شنبه</span>
+                <span
+                  class="text-[11px] w-full text-center px-2 py-1 rounded-full bg-slate-100 text-slate-500">دوشنبه</span>
+              </div>
+              <div class="space-y-1.5 flex flex-col items-end">
+                <div class="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 rounded-md px-2 py-1 w-fit">
+                  <img src="img/clock1.svg" class="w-3.5 h-3.5" alt="">
+                  <span>جلسه ۱ : ۱۳:۳۰ تا ۱۵:۰۰</span>
+                </div>
+                <div
+                  class="flex items-center gap-1.5 text-xs text-emerald-600 bg-emerald-50 rounded-md px-2 py-1 w-fit">
+                  <img src="img/clock2.svg" class="w-3.5 h-3.5" alt="">
+                  <span>جلسه ۲ : ۱۲:۰۰ تا ۱۵:۰۰</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3 items-center flex-row-reverse justify-between pt-6 mt-3 border-t border-b-gray-800 ">
+          <div class="flex items-center flex-row-reverse gap-3 text-slate-400">
+            <button class="hover:text-red-500" data-action="delete">
+              <img src="img/trash.svg" class="w-4 h-4" alt="">
+            </button>
+            <button class="hover:text-brand-600" data-action="edit">
+              <img src="img/setting-2.svg" class="w-4 h-4" alt="">
+            </button>
+            <button class="hover:text-brand-600 " data-action="students">
+              <img src="img/user-add jadid tar.png" class="w-4 h-4" alt="">
+            </button>
+          </div>
+          <a href="#" class="text-slate-500 text-xs font-medium flex items-center gap-1">
+            <img src="img/clock.svg" alt="">
+            ۳ روز
+            <img src="img/profile-2user3.svg" class="w-3.5 h-3.5" alt="">
+            ۱۱ از ۴۰ نفر
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="overlay" onclick="closeMenu()" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+  <aside id="sidebar"
+    class="bg-white w-4/5 max-w-xs lg:max-w-[330px] lg:w-full min-h-screen h-screen rounded-2xl shadow-lg flex flex-col overflow-hidden border fill-none fixed top-0 right-0 z-50 translate-x-full transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:my-8 lg:ml-8 order-1">
+
+    <div class="px-6 pt-6 pb-4">
+      <div class="flex items-center gap-3 justify-start">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
+          <img src="img/teacher.png" alt="لوگو" class="w-5 h-5" aria-hidden="true" />
+        </div>
+        <span class="text-[#3D3D3D] text-lg font-bold leading-none">سامانه مدارس</span>
+      </div>
+    </div>
+    <nav class="flex-1 px-4 pb-4 overflow-y-auto">
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-5 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/element-4.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">داشبورد</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">مدیریت دانشجویان</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#2F66F6] text-white focus:outline-none focus:ring-2 focus:ring-[#2F66F6] focus:ring-offset-2 transition-colors"
+            style="height:44px;" aria-current="page">
+            <img src="img/user-add.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">پیش ثبت نام (جدید)</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/diagram.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">در انتظار تایید</span>
+          </a>
+        </li>
+
+        <li class="relative">
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/clock.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">در صف کلاس</span>
+            <span
+              class="w-5 h-5 rounded-full bg-[#FF2D55] text-white text-[10px] font-bold flex items-center justify-center leading-none flex-shrink-0">۲</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/profile-2user.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">لیست دانشجویان فعال</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">گروه اساتید</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/calendar.png" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">مدیریت اساتید</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/Vector.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تقویم هفتگی اساتید</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">آموزش و ارزیابی</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/book.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">مدیریت کلاس ها</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/random chiz.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">حضور و غیاب</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/chart.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">نمرات</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/masg.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">نظرات و بازخورد ها</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/notification.png" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">اعلان و هشدارها</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-3 pt-3 pb-1">
+        <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">برنامه کارآموزی</span>
+      </div>
+
+      <ul class="space-y-1 mb-2">
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/profile-2user.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">کارآموزان فعال</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/user-addd.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تعریف کارآموز جدید</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/medal.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تسک ها و کارتابل</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/chart.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تاریخچه و آرشیو تسک ها</span>
+            <span
+              class="w-5 h-5 rounded-full bg-[#FF2D55] text-white text-[10px] font-bold flex items-center justify-center leading-none flex-shrink-0">۲</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/masg.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تیکت ها و اعلان ها</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/chart.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">برایند و ارزیابی</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/setting-2.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تنظیمات کارآموزی</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
+            style="height:44px;">
+            <img src="img/setting-2.svg" alt="" class="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span class="flex-1 text-sm font-medium">تنظیمات</span>
+          </a>
+        </li>
+      </ul>
+
+    </nav>
+    <div class="px-4 pb-5">
+      <div class="bg-[#F5F5F5] rounded-2xl px-4 py-3 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+          <img src="img/Status Indicator.png" alt="آواتار" class="w-10 h-10" aria-hidden="true" />
+        </div>
+        <div class="flex-1 text-right">
+          <p class="text-sm font-bold text-[#3D3D3D] leading-snug">مدیر سامانه</p>
+          <p class="text-xs font-normal text-[#9CA3AF] leading-snug mt-0.5" style="direction:ltr; text-align:right;">
+            admin@schoool.com</p>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+  <div id="teachersModalOverlay" onclick="closeTeachersModal(event)"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/35 backdrop-blur-sm px-4">
+    <div role="dialog" aria-modal="true" aria-labelledby="teachersModalTitle" onclick="event.stopPropagation()"
+      class="w-full sm:w-[90%] lg:w-[650px] max-w-[700px] max-h-[85vh] overflow-y-auto bg-white rounded-[20px] lg:rounded-3xl shadow-2xl">
+
+      <div class="flex items-center justify-between px-6 lg:px-8 pt-6 pb-5">
+        <h2 id="teachersModalTitle" class="text-2xl lg:text-3xl font-bold text-[#2F2F2F]">
+          همه ی اساتید و منتور ها
+        </h2>
+        <button type="button" onclick="closeTeachersModal()"
+          class="text-gray-400 hover:text-gray-600 text-2xl leading-none focus:outline-none focus:ring-2 focus:ring-brand-600 rounded">
+          <img src="img/zabdar.png" alt="">
+        </button>
+      </div>
+      <div class="border-b border-gray-200"></div>
+      <div class="divide-y divide-gray-100">
+        <button type="button" data-filter-type="teacher" data-filter-name="خانم یعقوبی"
+          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
+          style="min-height:64px;">
+          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style="background-color:#EAF2FF;">
+            <img src="img/user-add2.svg" class="w-5 h-5" alt="">
+          </span>
+          <span class="font-semibold text-blue-600">خانم یعقوبی</span>
+        </button>
+        <button type="button" data-filter-type="teacher" data-filter-name="آقای بارونچیان"
+          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
+          style="min-height:64px;">
+          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style="background-color:#EAF2FF;">
+            <img src="img/user-add2.svg" class="w-5 h-5" alt="">
+          </span>
+          <span class="font-semibold text-blue-600">آقای بارونچیان</span>
+        </button>
+        <button type="button" data-filter-type="teacher" data-filter-name="آقای زارع"
+          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
+          style="min-height:64px;">
+          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style="background-color:#EAF2FF;">
+            <img src="img/user-add2.svg" class="w-5 h-5" alt="">
+          </span>
+          <span class="font-semibold text-blue-600">آقای زارع</span>
+        </button>
+        <button type="button" data-filter-type="mentor" data-filter-name="عرفان مرادی"
+          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
+          style="min-height:64px;">
+          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style="background-color:#DDF9E8;">
+            <img src="img/user-add3.svg" class="w-5 h-5" alt="">
+          </span>
+          <span class="font-semibold text-emerald-600">عرفان مرادی</span>
+        </button>
+      </div>
+      <div class="pb-4"></div>
+    </div>
+  </div>
+  <div id="createClassModalOverlay" onclick="closeCreateClassModal(event)"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/35 backdrop-blur-sm px-4">
+    <div role="dialog" aria-modal="true" aria-labelledby="createClassModalTitle" onclick="event.stopPropagation()"
+      class="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+        <h2 id="createClassModalTitle" class="text-lg font-bold text-slate-800">ایجاد کلاس جدید</h2>
+        <button type="button" onclick="closeCreateClassModal()"
+          class="w-8 h-8 flex items-center justify-center bg-[#EBEBEB6B] rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">
+          <img src="img/Icon.svg" alt="">
+        </button>
+      </div>
+      <div class="px-6 py-5 space-y-5 overflow-y-auto">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">نام کلاس</label>
+          <input type="text" id="newClassName" placeholder="Back-2005"
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">استاد مربوطه</label>
+          <div class="relative">
+            <select id="newClassTeacher"
+              class="w-full appearance-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>آقای زارع</option>
+              <option>خانم یعقوبی</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">منتور کلاس</label>
+          <div class="relative">
+            <select id="newClassMentor"
+              class="w-full appearance-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>انتخاب منتور (بدون منتور)</option>
+              <option>عرفان مرادی</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-3">روزهای برگزاری</label>
+          <div class="flex flex-wrap gap-2" id="days">
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">شنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">یکشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">دوشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه
+              شنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">چهارشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">پنجشنبه</button>
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+          <div class="flex items-center gap-1.5 text-sm font-semibold text-blue-600 mb-1">
+            <img src="img/⏰.png" alt="" class="w-4 h-4" />
+            ساعت برگزاری تایم اول
+          </div>
+          <p class="text-xs text-slate-400 mb-2">انتخاب بازه زمانی (یک ساعت و نیم)</p>
+          <div class="relative">
+            <select id="newClassTime1"
+              class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>انتخاب تایم اول</option>
+              <option>۰۸:۰۰ - ۰۹:۳۰</option>
+              <option>۱۰:۰۰ - ۱۱:۳۰</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+          <div class="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 mb-1">
+            <img src="img/⏰.png" alt="" class="w-4 h-4" />
+            ساعت برگزاری تایم دوم (اختیاری)
+          </div>
+          <p class="text-xs text-slate-400 mb-2">انتخاب بازه زمانی (یک ساعت و نیم)</p>
+          <div class="relative">
+            <select id="newClassTime2"
+              class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>بدون تایم دوم (خالی)</option>
+              <option>۱۳:۰۰ - ۱۴:۳۰</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">ظرفیت کلاس (تعداد کل عضو پذیرفته شده)</label>
+          <input type="number" id="newClassCapacity" value="8"
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">توضیحات</label>
+          <textarea rows="3" id="newClassDescription" placeholder="توضیحات تکمیلی درباره کلاس..."
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/50">
+        <button type="button" onclick="closeCreateClassModal()"
+          class="px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-100 transition">انصراف</button>
+        <button type="button" onclick="createNewClass()"
+          class="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition">ایجاد
+          کلاس</button>
+      </div>
+    </div>
+  </div>
+  <div id="deleteModalOverlay" onclick="closeDeleteModal(event)"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+    <div onclick="event.stopPropagation()" class="bg-[#fff] rounded-3xl shadow-xl w-full max-w-[642px] sm:w-[90%]">
+      <div class="flex items-center justify-between px-6 sm:px-8 pt-6 sm:pt-7 pb-5">
+        <div class="flex items-center gap-3">
+          <img src="img/khatar.png" alt="">
+          <h2 class="text-2xl sm:text-[32px] font-bold text-gray-900 leading-tight">
+            حذف دانش آموز
+          </h2>
+        </div>
+        <button type="button" onclick="closeDeleteModal()"
+          class="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer">
+          <img src="img/zabdar.png" alt="">
+        </button>
+      </div>
+      <div class="border-b border-gray-200"></div>
+      <div class="px-6 sm:px-8 py-8 sm:py-10">
+        <p class="text-center font-bold text-gray-700 text-base sm:text-lg leading-8 sm:leading-9">
+          آیا از حذف این دانش آموز اطمینان دارید؟ این عمل
+          <br class="hidden sm:block" />
+          غیر قابل بازگشت است.
+        </p>
+      </div>
+      <div class="border-b border-gray-200"></div>
+      <div class="flex justify-end gap-3 px-6 sm:px-8 py-5 sm:py-6">
+        <button type="button" onclick="closeDeleteModal()"
+          class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-bold rounded-xl px-8 py-2.5 transition-colors">
+          انصراف
+        </button>
+        <button type="button" onclick="confirmDeleteClass()"
+          class="bg-rose-600 hover:bg-rose-700 text-black font-bold rounded-xl px-8 py-2.5 transition-colors">
+          تایید
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="excelModalOverlay" onclick="closeExcelModal(event)"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+    <div onclick="event.stopPropagation()"
+      class="w-full max-w-[1050px] bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8 space-y-6">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="rounded-lg w-10 h-10 flex items-center justify-center shrink-0">
+            <img src="img/calculator.png" alt="">
+          </div>
+          <h1 class="text-lg sm:text-xl font-bold text-gray-800">راهنمای وارد کردن سریع دانش آموزان</h1>
+        </div>
+        <button type="button" onclick="closeExcelModal()"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-500 rounded-lg w-9 h-9 flex items-center justify-center shrink-0 cursor-pointer">
+          <img src="img/zabdar.png" alt="">
+        </button>
+      </div>
+      <div class="border-t border-gray-200"></div>
+      <div class="bg-yellow-50 border border-yellow-300 rounded-xl p-4 sm:p-6">
+        <div class="flex items-start justify-start gap-2 mb-3">
+          <img src="img/nmidinam.png" alt="">
+          <h2 class="font-bold text-sm sm:text-base text-[#973C00]">دفترچه راهنمای ستون های دانش آموزان:</h2>
+        </div>
+        <div class="space-y-2 text-right">
+          <p class="text-[#973C00] font-bold text-sm sm:text-base">۱- سر ستون های (نام و نام خانوادگی) و (موبایل) اجباری
+            هستند.</p>
+          <p class="text-[#973C00] font-bold text-sm sm:text-base">۲- برای اختصاص دادن دانش آموز به یک دوره/کلاس، نام
+            دقیق کلاس را در ستون (دوره) بنویسید.</p>
+          <p class="text-[#973C00] font-bold text-sm sm:text-base">۳- مقدار ستون (وضعیت) می تواند (فعال) یا (غیر فعال)
+            باشد.</p>
+        </div>
+      </div>
+      <h3 class="text-start font-bold text-gray-800 text-base sm:text-lg">نمونه مشخصات و سر ستون ها در فایل اکسل:</h3>
+      <div class="overflow-x-auto rounded-xl border border-gray-200">
+        <table class="w-full min-w-[600px] border-collapse bg-white">
+          <thead>
+            <tr class="bg-gray-50 ">
+              <th class="px-4 py-3 text-center font-bold text-black border-gray-200">نام دانش آموز</th>
+              <th class="px-4 py-3 text-center font-bold text-black border-gray-200">موبایل</th>
+              <th class="px-4 py-3 text-center font-bold text-black border-gray-200">کد ملی</th>
+              <th class="px-4 py-3 text-center font-bold text-black border-gray-200">دوره</th>
+              <th class="px-4 py-3 text-center font-bold text-black border-gray-200">سن</th>
+              <th class="px-4 py-3 text-center font-bold text-black border-gray-200">نام پدر</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-50 font-bold">
+              <td class="px-4 py-3 text-center text-black border-gray-200">رضا معصومی</td>
+              <td class="px-4 py-3 text-center text-black border-gray-200">۰۹۱۱۶۵۷۴۸۳۹</td>
+              <td class="px-4 py-3 text-center text-black border-gray-200">۲۱۵۰۹۹۷۷</td>
+              <td class="px-4 py-3 text-center text-black border-gray-200">UI/UX</td>
+              <td class="px-4 py-3 text-center text-black border-gray-200">۲۴</td>
+              <td class="px-4 py-3 text-center text-black border-gray-200">اصغر</td>
+            </tr>
+            <tr class="hover:bg-gray-50 font-bold">
+              <td class="px-4 py-3 text-center text-black">رویا صادقی</td>
+              <td class="px-4 py-3 text-center text-black">۰۹۱۱۶۵۷۴۸۳۹</td>
+              <td class="px-4 py-3 text-center text-black">۲۱۵۰۹۹۷۷</td>
+              <td class="px-4 py-3 text-center text-black">Back</td>
+              <td class="px-4 py-3 text-center text-black">۲۴</td>
+              <td class="px-4 py-3 text-center text-black">اصغر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button
+        class="w-full h-[60px] bg-[#10B981] hover:bg-[#0ea371] text-white rounded-xl font-bold flex items-center justify-center gap-2 text-sm sm:text-base transition-colors cursor-pointer">
+        <img src="img/export.svg" alt="">
+        <p>انتخاب فایل اکسل دانش آموزان</p>
+      </button>
+      <p class="text-center text-black text-xs sm:text-sm">
+        فرمت فایل قابل پردازش: <span dir="ltr" class="inline-block">Xlsx / Xls / Csv</span>
+      </p>
+    </div>
+  </div>
+  <div id="editClassModalOverlay" onclick="closeEditClassModal(event)"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/35 backdrop-blur-sm px-4">
+    <div role="dialog" aria-modal="true" aria-labelledby="editClassModalTitle" onclick="event.stopPropagation()"
+      class="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+        <h2 id="editClassModalTitle" class="text-lg font-bold text-slate-800">ویرایش کلاس</h2>
+        <button type="button" onclick="closeEditClassModal()"
+          class="w-8 h-8 flex items-center justify-center bg-[#EBEBEB6B] rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">
+          <img src="img/Icon.svg" alt="">
+        </button>
+      </div>
+      <div class="px-6 py-5 space-y-5 overflow-y-auto">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">نام کلاس</label>
+          <input type="text" id="editClassName" placeholder="Back-2005"
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">استاد مربوطه</label>
+          <div class="relative">
+            <select id="editClassTeacher"
+              class="w-full appearance-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>آقای زارع</option>
+              <option>خانم یعقوبی</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">منتور کلاس</label>
+          <div class="relative">
+            <select id="editClassMentor"
+              class="w-full appearance-none rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>انتخاب منتور (بدون منتور)</option>
+              <option>عرفان مرادی</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-3">روزهای برگزاری</label>
+          <div class="flex flex-wrap gap-2" id="editDays">
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">شنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">یکشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">دوشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه
+              شنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">چهارشنبه</button>
+            <button type="button"
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">پنجشنبه</button>
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+          <div class="flex items-center gap-1.5 text-sm font-semibold text-blue-600 mb-1">
+            <img src="img/⏰.png" alt="" class="w-4 h-4" />
+            ساعت برگزاری تایم اول
+          </div>
+          <p class="text-xs text-slate-400 mb-2">انتخاب بازه زمانی (یک ساعت و نیم)</p>
+          <div class="relative">
+            <select id="editClassTime1"
+              class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>انتخاب تایم اول</option>
+              <option>۰۸:۰۰ - ۰۹:۳۰</option>
+              <option>۱۰:۰۰ - ۱۱:۳۰</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
+          <div class="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 mb-1">
+            <img src="img/⏰.png" alt="" class="w-4 h-4" />
+            ساعت برگزاری تایم دوم (اختیاری)
+          </div>
+          <p class="text-xs text-slate-400 mb-2">انتخاب بازه زمانی (یک ساعت و نیم)</p>
+          <div class="relative">
+            <select id="editClassTime2"
+              class="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500">
+              <option>بدون تایم دوم (خالی)</option>
+              <option>۱۳:۰۰ - ۱۴:۳۰</option>
+            </select>
+            <img src="img/arrow-down.svg" alt=""
+              class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">ظرفیت کلاس (تعداد کل عضو پذیرفته شده)</label>
+          <input type="number" id="editClassCapacity" value="8"
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2">توضیحات</label>
+          <textarea rows="3" id="editClassDescription" placeholder="توضیحات تکمیلی درباره کلاس..."
+            class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/50">
+        <button type="button" onclick="closeEditClassModal()"
+          class="px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-100 transition">انصراف</button>
+        <button type="button" onclick="saveClassChanges()"
+          class="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition">ذخیره
+          تغییرات</button>
+      </div>
+    </div>
+  </div>
+  <div id="studentModalOverlay" onclick="closeStudentModal(event)"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+    <div onclick="event.stopPropagation()" id="studentModal" dir="rtl"
+      class="w-full max-w-xl bg-white rounded-2xl shadow-lg flex flex-col max-h-[90vh]">
+      <div class="flex flex-row-reverse items-start justify-between px-6 pt-6 pb-4">
+        <button onclick="closeStudentModal()"
+          class="w-9 h-9 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-gray-200 cursor-pointer transition-colors">
+          <img src="img/zabdar.png" alt="" class="w-4 h-4">
+        </button>
+        <div class="text-right">
+          <h2 class="text-lg font-bold text-gray-900">مدیریت دانش آموزان دوره</h2>
+          <span class="text-sm font-medium text-blue-600">Back-2001</span>
+        </div>
+      </div>
+      <div class="border-t border-gray-200"></div>
+      <div class="flex items-center justify-between px-6 py-4">
+        <img src="img/profile-2user.svg" alt="" class="w-5 h-5">
+        <span id="studentCountLabel" class="text-sm font-medium text-gray-700">دانش آموزان این دوره (۱۱)</span>
+        <button type="button" onclick="addStudentPrompt()"
+          class="text-sm font-medium text-blue-600 hover:text-blue-700 cursor-pointer">+ افزودن دانش‌آموز</button>
+      </div>
+      <div
+        class="overflow-y-auto px-6 pb-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full">
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۱</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۲</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۳</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۴</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۵</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۶</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۷</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between border-b border-gray-200 py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۸</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+        <div class="student-row flex flex-row-reverse items-center justify-between py-4">
+          <button type="button" data-action="remove-student"
+            class="text-sm font-medium text-red-600 hover:text-red-700 cursor-pointer">حذف از دوره</button>
+          <span class="text-sm text-gray-600" dir="ltr">۰۹۱۲۳۴۵۶۷۸۹</span>
+          <div class="flex flex-row-reverse items-center gap-2">
+            <span class="text-sm font-medium text-gray-800">کاربر۹</span>
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+              <img src="img/user-add jadid tar.png" alt="" class="w-4 h-4">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 px-6 pt-4 pb-6">
+        <button onclick="closeStudentModal()"
+          class="w-full py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium cursor-pointer transition-colors">
+          بستن پنجره
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="js.js"></script>
+</body>
+
+</html>
