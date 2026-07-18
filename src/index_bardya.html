@@ -67,12 +67,29 @@
           <img src="img/frame.svg" class="hidden lg:block w-3.5 h-3.5" alt="">
           <span class="hidden lg:inline">خروجی اکسل</span>
         </button>
-        <button type="button" onclick="openExcelModal()"
-          class="flex items-center justify-center lg:justify-start gap-1.5 text-slate-500 text-xs bg-white border border-slate-200 rounded-lg hover:bg-slate-50 w-9 h-9 lg:w-auto lg:h-auto lg:px-3 lg:py-2">
-          <img src="img/More_Vertical.svg" class="block lg:hidden w-4 h-4" alt="">
-          <img src="img/export.svg" class="hidden lg:block w-3.5 h-3.5" alt="">
-          <span class="hidden lg:inline">وارد کردن از اکسل</span>
-        </button>
+        <div class="relative">
+          <button type="button" id="excelOptionsBtn" onclick="toggleExcelOptionsMenu(event)" aria-haspopup="true"
+            aria-expanded="false"
+            class="flex items-center justify-center lg:justify-start gap-1.5 text-slate-500 text-xs bg-white border border-slate-200 rounded-lg hover:bg-slate-50 w-9 h-9 lg:w-auto lg:h-auto lg:px-3 lg:py-2">
+            <img src="img/More_Vertical.svg" class="block lg:hidden w-4 h-4" alt="">
+            <img src="img/export.svg" class="hidden lg:block w-3.5 h-3.5" alt="">
+            <span class="hidden lg:inline">وارد کردن از اکسل</span>
+          </button>
+          <div id="excelOptionsMenu" onclick="event.stopPropagation()"
+            class="hidden absolute left-0 top-full mt-2 w-52 bg-white rounded-2xl shadow-lg border border-slate-100 py-1 z-40">
+            <button type="button" data-action="excel-export" onclick="selectExcelOption('export')"
+              class="w-full flex items-center justify-between gap-2 px-4 py-3.5 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors rounded-t-2xl">
+              <img src="img/frame.svg" class="w-4 h-4 shrink-0" alt="">
+              <span class="flex-1 text-right">خروجی اکسل</span>
+            </button>
+            <div class="border-t border-slate-100 mx-2"></div>
+            <button type="button" data-action="excel-import" onclick="selectExcelOption('import')"
+              class="w-full flex items-center justify-between gap-2 px-4 py-3.5 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors rounded-b-2xl">
+              <img src="img/export.svg" class="w-4 h-4 shrink-0" alt="">
+              <span class="flex-1 text-right">وارد کردن اکسل</span>
+            </button>
+          </div>
+        </div>
         <button type="button" id="openCreateClassModalBtn" onclick="openCreateClassModal()"
           class="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 active:scale-95 transition text-white text-sm font-medium fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full shadow-lg lg:static lg:z-auto lg:w-auto lg:h-auto lg:rounded-lg lg:shadow-none lg:px-4 lg:py-2.5">
           <img src="img/add.svg" class="w-5 h-5 lg:w-4 lg:h-4" alt="">
@@ -128,7 +145,7 @@
             <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
           </span>
           <button type="button" onclick="toggleMobileTeacherDropdown()" aria-label="بستن">
-            <img src="img/zabdar.png" class="w-3.5 h-3.5" alt="">
+            <img src="img/x-03.svg" class="w-3.5 h-3.5" alt="">
           </button>
         </div>
         <div class="divide-y divide-gray-100 max-h-72 overflow-y-auto">
@@ -551,7 +568,7 @@
         </h2>
         <button type="button" onclick="closeTeachersModal()"
           class="text-gray-400 hover:text-gray-600 text-2xl leading-none focus:outline-none focus:ring-2 focus:ring-brand-600 rounded">
-          <img src="img/zabdar.png" alt="">
+          <img src="img/x-03.svg" alt="">
         </button>
       </div>
       <div class="border-b border-gray-200"></div>
@@ -647,8 +664,7 @@
             <button type="button"
               class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">دوشنبه</button>
             <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه
-              شنبه</button>
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه شنبه</button>
             <button type="button"
               class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">چهارشنبه</button>
             <button type="button"
@@ -720,7 +736,7 @@
         </div>
         <button type="button" onclick="closeDeleteModal()"
           class="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer">
-          <img src="img/zabdar.png" alt="">
+          <img src="img/x-03.svg" alt="">
         </button>
       </div>
       <div class="border-b border-gray-200"></div>
@@ -757,7 +773,7 @@
         </div>
         <button type="button" onclick="closeExcelModal()"
           class="bg-gray-100 hover:bg-gray-200 text-gray-500 rounded-lg w-9 h-9 flex items-center justify-center shrink-0 cursor-pointer">
-          <img src="img/zabdar.png" alt="">
+          <img src="img/x-03.svg" alt="">
         </button>
       </div>
       <div class="border-t border-gray-200"></div>
@@ -937,7 +953,7 @@
       <div class="flex flex-row-reverse items-start justify-between px-6 pt-6 pb-4">
         <button onclick="closeStudentModal()"
           class="w-9 h-9 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-gray-200 cursor-pointer transition-colors">
-          <img src="img/zabdar.png" alt="" class="w-4 h-4">
+          <img src="img/x-03.svg" alt="" class="w-4 h-4">
         </button>
         <div class="text-right">
           <h2 class="text-lg font-bold text-gray-900">مدیریت دانش آموزان دوره</h2>
@@ -1061,7 +1077,7 @@
       </div>
     </div>
   </div>
-  <script src="js.js"></script>
+  <script src="costume.js"></script>
 </body>
 
 </html>

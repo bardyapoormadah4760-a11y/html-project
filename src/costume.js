@@ -448,3 +448,43 @@ document.addEventListener('keydown', function (e) {
         toggleMobileTeacherDropdown();
     }
 });
+    function toggleExcelOptionsMenu(event) {
+      if (event) event.stopPropagation();
+      const menu = document.getElementById('excelOptionsMenu');
+      const btn = document.getElementById('excelOptionsBtn');
+      if (!menu || !btn) return;
+      const isOpen = !menu.classList.contains('hidden');
+      if (isOpen) {
+        closeExcelOptionsMenu();
+      } else {
+        menu.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closeExcelOptionsMenu() {
+      const menu = document.getElementById('excelOptionsMenu');
+      const btn = document.getElementById('excelOptionsBtn');
+      if (!menu || !btn) return;
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function selectExcelOption(type) {
+      closeExcelOptionsMenu();
+      if (typeof openExcelModal === 'function') {
+        openExcelModal();
+      }
+    }
+
+    document.addEventListener('click', function (e) {
+      const menu = document.getElementById('excelOptionsMenu');
+      const btn = document.getElementById('excelOptionsBtn');
+      if (menu && !menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+        closeExcelOptionsMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeExcelOptionsMenu();
+    });
