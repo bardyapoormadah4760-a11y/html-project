@@ -88,66 +88,6 @@ document.addEventListener('keydown', function (e) {
 });
 
 function createNewClass() {
-    const overlay = document.getElementById('createClassModalOverlay');
-    const name = document.getElementById('newClassName').value.trim() || 'کلاس جدید';
-    const teacher = document.getElementById('newClassTeacher').value;
-    const mentor = document.getElementById('newClassMentor').value;
-    const capacity = document.getElementById('newClassCapacity').value || '0';
-    const description = document.getElementById('newClassDescription').value.trim() || 'توضیحاتی ثبت نشده است.';
-    const time1 = document.getElementById('newClassTime1').value;
-    const time2 = document.getElementById('newClassTime2').value;
-
-    const selectedDays = Array.from(overlay.querySelectorAll('.day-btn'))
-        .filter(function (btn) { return btn.classList.contains('bg-blue-600'); })
-        .map(function (btn) { return btn.textContent.replace(/\s+/g, ' ').trim(); });
-    const uniqueDays = Array.from(new Set(selectedDays));
-
-    const dayBadges = uniqueDays.map(function (day) {
-        return '<span class="text-[11px] w-full text-center px-2 py-1 rounded-full bg-slate-100 text-slate-500">' + day + '</span>';
-    }).join('');
-
-    let timeBadges = '';
-    if (time1 && time1 !== 'انتخاب تایم اول') {
-        timeBadges += '<div class="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 rounded-md px-2 py-1 w-fit"><img src="img/clock1.svg" class="w-3.5 h-3.5" alt=""><span>جلسه ۱ : ' + time1 + '</span></div>';
-    }
-    if (time2 && time2 !== 'بدون تایم دوم (خالی)') {
-        timeBadges += '<div class="flex items-center gap-1.5 text-xs text-emerald-600 bg-emerald-50 rounded-md px-2 py-1 w-fit"><img src="img/clock2.svg" class="w-3.5 h-3.5" alt=""><span>جلسه ۲ : ' + time2 + '</span></div>';
-    }
-
-    const mentorHtml = (mentor && mentor.indexOf('بدون منتور') === -1)
-        ? '<div class="text-xs"><div class="flex items-center gap-1.5 text-slate-500"><img src="img/profile-2user2.svg" class="w-3.5 h-3.5 text-slate-400" alt="">منتور : <span class="text-slate-600">' + mentor + '</span></div></div>'
-        : '';
-
-    const card = document.createElement('div');
-    card.className = 'bg-white rounded-xl border border-slate-200 p-4  hover:shadow-sm transition';
-    card.innerHTML =
-        '<div class="flex justify-between">' +
-        '<div class="flex flex-col gap-2">' +
-        '<div class="flex items-center gap-1.5">' +
-        '<div class="rounded-lg w-11 h-11 bg-[#DBEAFE] flex justify-center items-center "><img src="img/book jadid.svg" alt=""></div>' +
-        '<h3 class="font-bold text-slate-800">' + name + '</h3>' +
-        '</div>' +
-        '<div class="text-xs"><div class="flex items-center gap-1.5 text-slate-500"><img src="img/teacher.png" class="w-3.5 h-3.5 text-slate-400" alt="">استاد : <span class="text-slate-600">' + teacher + '</span></div></div>' +
-        mentorHtml +
-        '<p class="text-xs text-slate-400">' + description + '</p>' +
-        '</div>' +
-        '<div class="flex flex-col w-full max-w-fit">' +
-        '<div class="flex items-center flex-col gap-4 ">' +
-        '<div class="flex items-center gap-2 w-full">' + dayBadges + '</div>' +
-        '<div class="space-y-1.5 flex flex-col items-end">' + timeBadges + '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<div class="flex items-center flex-row-reverse justify-between pt-6 mt-3 border-t border-b-gray-800 ">' +
-        '<div class="flex items-center flex-row-reverse gap-3 text-slate-400">' +
-        '<button class="hover:text-red-500" title="حذف" data-action="delete"><img src="img/trash.svg" class="w-4 h-4" alt=""></button>' +
-        '<button class="hover:text-brand-600" title="ویرایش" data-action="edit"><img src="img/setting-2.svg" class="w-4 h-4" alt=""></button>' +
-        '<button class="hover:text-brand-600 " title="اعضا" data-action="students"><img src="img/user-add jadid tar.png" class="w-4 h-4" alt=""></button>' +
-        '</div>' +
-        '<a href="#" class="text-slate-500 text-xs font-medium flex items-center gap-1"><img src="img/clock.svg" alt="">' + toPersianDigits(uniqueDays.length) + ' روز<img src="img/profile-2user3.svg" class="w-3.5 h-3.5" alt="">' + toPersianDigits(0) + ' از ' + toPersianDigits(capacity) + ' نفر</a>' +
-        '</div>';
-
-    document.getElementById('classGrid').prepend(card);
     closeCreateClassModal();
 }
 
