@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +27,6 @@
     }
   </script>
 </head>
-
 <body class="bg-gray-100 min-h-screen p-3 sm:p-5 flex font-sans text-slate-800 text-sm overflow-x-hidden">
   <main class="flex-1 px-4 pb-6 lg:px-6 lg:pb-8 order-2 w-full overflow-x-hidden space-y-4">
     <div class="flex lg:hidden items-center justify-between mb-2">
@@ -233,7 +231,6 @@
         </button>
         <div id="teachersModalOverlay" onclick="event.stopPropagation()"
           class="hidden absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 z-40 overflow-hidden">
-
           <div class="px-4 py-3 border-b border-gray-100">
             <span id="teachersModalTitle" class="text-sm font-bold text-[#2F2F2F]">
               همه ی اساتید و منتور ها
@@ -354,11 +351,11 @@
       </button>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4" id="classGrid">
-      <div class="bg-white rounded-xl border border-slate-200 p-4  hover:shadow-sm transition">
+      <div class="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-sm transition">
         <div class="flex justify-between">
           <div class="flex flex-col gap-2 min-w-0">
             <div class="flex items-center gap-1.5">
-              <div class="rounded-lg w-11 h-11 bg-[#DBEAFE] flex justify-center items-center ">
+              <div class="rounded-lg w-11 h-11 bg-[#DBEAFE] flex justify-center items-center">
                 <img src="img/book jadid.svg" alt="">
               </div>
               <h3 class="font-bold text-slate-800">Back-2001</h3>
@@ -366,19 +363,20 @@
             <div class="text-xs">
               <div class="flex items-center gap-1.5 text-slate-500">
                 <img src="img/teacher.png" class="w-3.5 h-3.5 text-slate-400" alt="">
-                استاد : <span class="text-slate-600">آقای بارونچیان</span>
+                <span class="text-[#155DFC] font-bold">استاد :</span>
+                <span class="text-[#155DFC] font-bold">آقای بارونچیان</span>
               </div>
             </div>
             <div class="text-xs">
               <div class="flex items-center gap-1.5 text-slate-500">
                 <img src="img/profile-2user2.svg" class="w-3.5 h-3.5 text-slate-400" alt="">
-                <span class="text-slate-600">منتور : عرفان مرادی</span>
+                <span class="text-[#009866] font-bold">منتور : عرفان مرادی</span>
               </div>
             </div>
             <p class="text-xs text-slate-400">توضیحاتی ثبت نشده است.</p>
           </div>
           <div class="flex flex-col w-full max-w-fit flex-shrink-0">
-            <div class="flex items-center flex-col gap-4 ">
+            <div class="flex items-center flex-col gap-4">
               <div class="flex flex-nowrap items-center gap-2 w-full">
                 <span
                   class="text-[11px] w-full text-center px-2 py-1 rounded-full bg-slate-100 text-slate-500">یکشنبه</span>
@@ -388,13 +386,13 @@
               <div class="space-y-1.5 flex flex-col items-end">
                 <div class="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 rounded-md px-2 py-1 w-fit">
                   <img src="img/clock1.svg" class="w-3.5 h-3.5" alt="">
-                  <span>جلسه ۱ : ۱۳:۳۰ تا ۱۵:۰۰</span>
+                  <span>جلسه 1 : 13:30 تا 15:00</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex items-center flex-row-reverse justify-between pt-6 mt-3 border-t border-b-gray-800 ">
+        <div class="flex items-center flex-row-reverse justify-between pt-6 mt-3 border-t border-b-gray-800">
           <div class="flex items-center flex-row-reverse gap-3 text-slate-400">
             <button class="hover:text-red-500" data-action="delete">
               <img src="img/trash.svg" class="w-4 h-4" alt="">
@@ -402,23 +400,23 @@
             <button class="hover:text-brand-600" data-action="edit">
               <img src="img/setting-2.svg" class="w-4 h-4" alt="">
             </button>
-            <button class="hover:text-brand-600 " data-action="students">
+            <button class="hover:text-brand-600" data-action="students">
               <img src="img/user-add jadid tar.png" class="w-4 h-4" alt="">
             </button>
           </div>
           <a href="#" class="text-slate-500 text-xs font-medium flex items-center gap-1">
             <img src="img/clock.svg" alt="">
-            ۳ روز
+            3 روز
             <img src="img/profile-2user3.svg" class="w-3.5 h-3.5" alt="">
-            ۱۱ از ۴۰ نفر
+            9 از 40 نفر
           </a>
         </div>
       </div>
-      <div class="bg-white rounded-xl border border-slate-200 p-4  hover:shadow-sm transition">
+      <div class="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-sm transition">
         <div class="flex justify-between">
           <div class="flex flex-col gap-2 min-w-0">
             <div class="flex items-center gap-1.5">
-              <div class="rounded-lg w-11 h-11 bg-[#DBEAFE] flex justify-center items-center ">
+              <div class="rounded-lg w-11 h-11 bg-[#DBEAFE] flex justify-center items-center">
                 <img src="img/book jadid.svg" alt="">
               </div>
               <h3 class="font-bold text-slate-800">Back-2005</h3>
@@ -426,13 +424,14 @@
             <div class="text-xs">
               <div class="flex items-center gap-1.5 text-slate-500">
                 <img src="img/teacher.png" class="w-3.5 h-3.5 text-slate-400" alt="">
-                استاد : <span class="text-slate-600">آقای بارونچیان</span>
+                <span class="text-[#155DFC] font-bold">استاد :</span>
+                <span class="text-[#155DFC] font-bold">آقای بارونچیان</span>
               </div>
             </div>
             <p class="text-xs text-slate-400">توضیحاتی ثبت نشده است.</p>
           </div>
           <div class="flex flex-col w-full max-w-fit flex-shrink-0">
-            <div class="flex items-center flex-col gap-4 ">
+            <div class="flex items-center flex-col gap-4">
               <div class="flex items-center gap-2 w-full">
                 <span class="text-[11px] w-full text-center px-2 py-1 rounded-full bg-slate-100 text-slate-500">سه
                   شنبه</span>
@@ -442,18 +441,18 @@
               <div class="space-y-1.5 flex flex-col items-end">
                 <div class="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 rounded-md px-2 py-1 w-fit">
                   <img src="img/clock1.svg" class="w-3.5 h-3.5" alt="">
-                  <span>جلسه ۱ : ۱۳:۳۰ تا ۱۵:۰۰</span>
+                  <span>جلسه 1 : ۱۳:۳۰ تا 15:00</span>
                 </div>
                 <div
                   class="flex items-center gap-1.5 text-xs text-emerald-600 bg-emerald-50 rounded-md px-2 py-1 w-fit">
                   <img src="img/clock2.svg" class="w-3.5 h-3.5" alt="">
-                  <span>جلسه ۲ : ۱۲:۰۰ تا ۱۵:۰۰</span>
+                  <span>جلسه 2 : 12:00 تا 15:00</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex gap-3 items-center flex-row-reverse justify-between pt-6 mt-3 border-t border-b-gray-800 ">
+        <div class="flex gap-3 items-center flex-row-reverse justify-between pt-6 mt-3 border-t border-b-gray-800">
           <div class="flex items-center flex-row-reverse gap-3 text-slate-400">
             <button class="hover:text-red-500" data-action="delete">
               <img src="img/trash.svg" class="w-4 h-4" alt="">
@@ -461,15 +460,15 @@
             <button class="hover:text-brand-600" data-action="edit">
               <img src="img/setting-2.svg" class="w-4 h-4" alt="">
             </button>
-            <button class="hover:text-brand-600 " data-action="students">
+            <button class="hover:text-brand-600" data-action="students">
               <img src="img/user-add jadid tar.png" class="w-4 h-4" alt="">
             </button>
           </div>
           <a href="#" class="text-slate-500 text-xs font-medium flex items-center gap-1">
             <img src="img/clock.svg" alt="">
-            ۳ روز
+            3 روز
             <img src="img/profile-2user3.svg" class="w-3.5 h-3.5" alt="">
-            ۱۱ از ۴۰ نفر
+            9 از 40 نفر
           </a>
         </div>
       </div>
@@ -478,7 +477,6 @@
   <div id="overlay" onclick="closeMenu()" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
   <aside id="sidebar"
     class="bg-white w-4/5 max-w-xs lg:max-w-[330px] lg:w-full min-h-screen h-screen rounded-2xl shadow-lg flex flex-col overflow-hidden border fill-none fixed top-0 right-0 z-50 translate-x-full transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:my-8 lg:ml-8 order-1">
-
     <div class="px-6 pt-6 pb-4">
       <div class="flex items-center gap-3 justify-start">
         <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -488,9 +486,7 @@
       </div>
     </div>
     <nav class="flex-1 px-4 pb-4 overflow-y-auto">
-
       <ul class="space-y-1 mb-2">
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-5 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -500,13 +496,10 @@
           </a>
         </li>
       </ul>
-
       <div class="px-3 pt-3 pb-1">
         <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">مدیریت دانشجویان</span>
       </div>
-
       <ul class="space-y-1 mb-2">
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#2F66F6] text-white focus:outline-none focus:ring-2 focus:ring-[#2F66F6] focus:ring-offset-2 transition-colors"
@@ -515,7 +508,6 @@
             <span class="flex-1 text-sm font-medium">پیش ثبت نام (جدید)</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -524,7 +516,6 @@
             <span class="flex-1 text-sm font-medium">در انتظار تایید</span>
           </a>
         </li>
-
         <li class="relative">
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -535,7 +526,6 @@
               class="w-5 h-5 rounded-full bg-[#FF2D55] text-white text-[10px] font-bold flex items-center justify-center leading-none flex-shrink-0">۲</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -545,13 +535,10 @@
           </a>
         </li>
       </ul>
-
       <div class="px-3 pt-3 pb-1">
         <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">گروه اساتید</span>
       </div>
-
       <ul class="space-y-1 mb-2">
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -560,7 +547,6 @@
             <span class="flex-1 text-sm font-medium">مدیریت اساتید</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -570,13 +556,10 @@
           </a>
         </li>
       </ul>
-
       <div class="px-3 pt-3 pb-1">
         <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">آموزش و ارزیابی</span>
       </div>
-
       <ul class="space-y-1 mb-2">
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -585,7 +568,6 @@
             <span class="flex-1 text-sm font-medium">مدیریت کلاس ها</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -594,7 +576,6 @@
             <span class="flex-1 text-sm font-medium">حضور و غیاب</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -603,7 +584,6 @@
             <span class="flex-1 text-sm font-medium">نمرات</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -612,7 +592,6 @@
             <span class="flex-1 text-sm font-medium">نظرات و بازخورد ها</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -622,13 +601,10 @@
           </a>
         </li>
       </ul>
-
       <div class="px-3 pt-3 pb-1">
         <span class="text-[11px] font-normal text-[#9CA3AF] tracking-wide">برنامه کارآموزی</span>
       </div>
-
       <ul class="space-y-1 mb-2">
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -637,7 +613,6 @@
             <span class="flex-1 text-sm font-medium">کارآموزان فعال</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -646,7 +621,6 @@
             <span class="flex-1 text-sm font-medium">تعریف کارآموز جدید</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -655,7 +629,6 @@
             <span class="flex-1 text-sm font-medium">تسک ها و کارتابل</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -666,7 +639,6 @@
               class="w-5 h-5 rounded-full bg-[#FF2D55] text-white text-[10px] font-bold flex items-center justify-center leading-none flex-shrink-0">۲</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -675,7 +647,6 @@
             <span class="flex-1 text-sm font-medium">تیکت ها و اعلان ها</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -684,7 +655,6 @@
             <span class="flex-1 text-sm font-medium">برایند و ارزیابی</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -693,7 +663,6 @@
             <span class="flex-1 text-sm font-medium">تنظیمات کارآموزی</span>
           </a>
         </li>
-
         <li>
           <a href="#"
             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#3D3D3D] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#2F66F6] transition-colors"
@@ -703,7 +672,6 @@
           </a>
         </li>
       </ul>
-
     </nav>
     <div class="px-4 pb-5">
       <div class="bg-[#F5F5F5] rounded-2xl px-4 py-3 flex items-center gap-3">
@@ -717,7 +685,6 @@
         </div>
       </div>
     </div>
-
   </aside>
   <div id="createClassModalOverlay" onclick="closeCreateClassModal(event)"
     class="fixed inset-0 z-50 hidden items-center justify-center bg-black/35 backdrop-blur-sm px-4">
@@ -758,23 +725,6 @@
             </select>
             <img src="img/arrow-down.svg" alt=""
               class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-          </div>
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-slate-700 mb-3">روزهای برگزاری</label>
-          <div class="flex flex-wrap gap-2" id="days">
-            <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">شنبه</button>
-            <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">یکشنبه</button>
-            <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">دوشنبه</button>
-            <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه شنبه</button>
-            <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">چهارشنبه</button>
-            <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">پنجشنبه</button>
           </div>
         </div>
         <div class="rounded-xl border border-slate-100 bg-slate-50/60 p-4">
@@ -901,7 +851,7 @@
       <div class="overflow-x-auto rounded-xl border border-gray-200">
         <table class="w-full min-w-[600px] border-collapse bg-white">
           <thead>
-            <tr class="bg-gray-50 ">
+            <tr class="bg-gray-50">
               <th class="px-4 py-3 text-center font-bold text-black border-gray-200">نام دانش آموز</th>
               <th class="px-4 py-3 text-center font-bold text-black border-gray-200">موبایل</th>
               <th class="px-4 py-3 text-center font-bold text-black border-gray-200">کد ملی</th>
@@ -991,8 +941,7 @@
             <button type="button"
               class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">دوشنبه</button>
             <button type="button"
-              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه
-              شنبه</button>
+              class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">سه شنبه</button>
             <button type="button"
               class="day-btn px-4 py-1.5 rounded-lg text-sm border border-slate-200 text-slate-600 bg-slate-50 hover:border-blue-300 transition">چهارشنبه</button>
             <button type="button"
@@ -1185,5 +1134,4 @@
   </div>
   <script src="costume.js"></script>
 </body>
-
 </html>
