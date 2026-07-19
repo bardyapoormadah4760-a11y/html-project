@@ -99,27 +99,182 @@
     </div>
     <div
       class="bg-white shadow-lg rounded-xl border flex-row-reverse border-slate-200 p-3 hidden lg:flex items-center gap-2 flex-wrap">
-      <button
-        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
-        نام کلاس/الفبا-صعودی
-        <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
-      </button>
+      <div class="relative">
+        <button type="button" id="openClassNameModalBtn" onclick="toggleDesktopDropdown('classNameDropdownPanel', event)"
+          class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
+          <span id="classNameFilterLabel">نام کلاس/الفبا-صعودی</span>
+          <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
+        </button>
+        <div id="classNameDropdownPanel" onclick="event.stopPropagation()"
+          class="hidden absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 z-40 overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-100">
+            <span class="text-sm font-bold text-[#2F2F2F]">نام کلاس</span>
+          </div>
+          <div class="divide-y divide-gray-100 max-h-72 overflow-y-auto">
+            <button type="button" data-filter-type="class" data-filter-name="all"
+              onclick="selectClassNameFilter('all')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#F1F5F9;">
+                <img src="img/book jadid.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-slate-600">همه ی کلاس ها</span>
+            </button>
+            <button type="button" data-filter-type="class" data-filter-name="Back-2001"
+              onclick="selectClassNameFilter('Back-2001')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/book jadid.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600" dir="ltr">Back-2001</span>
+            </button>
+            <button type="button" data-filter-type="class" data-filter-name="Back-2005"
+              onclick="selectClassNameFilter('Back-2005')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/book jadid.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600" dir="ltr">Back-2005</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <button class="text-slate-400 p-2">
         <img src="img/arrow-3.svg" class="w-4 h-4" alt="">
       </button>
-      <button
-        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
-        همه ی روز ها
-        <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
-      </button>
+      <div class="relative">
+        <button type="button" id="openDaysModalBtn" onclick="toggleDesktopDropdown('daysDropdownPanel', event)"
+          class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
+          <span id="daysFilterLabel">همه ی روز ها</span>
+          <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
+        </button>
+        <div id="daysDropdownPanel" onclick="event.stopPropagation()"
+          class="hidden absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 z-40 overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-100">
+            <span class="text-sm font-bold text-[#2F2F2F]">همه ی روز ها</span>
+          </div>
+          <div class="divide-y divide-gray-100 max-h-72 overflow-y-auto">
+            <button type="button" data-filter-type="day" data-filter-name="all"
+              onclick="selectDayFilter('all')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#F1F5F9;">
+                <img src="img/calendar.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-slate-600">همه ی روز ها</span>
+            </button>
+            <button type="button" data-filter-type="day" data-filter-name="شنبه"
+              onclick="selectDayFilter('شنبه')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/calendar.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">شنبه</span>
+            </button>
+            <button type="button" data-filter-type="day" data-filter-name="یکشنبه"
+              onclick="selectDayFilter('یکشنبه')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/calendar.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">یکشنبه</span>
+            </button>
+            <button type="button" data-filter-type="day" data-filter-name="دوشنبه"
+              onclick="selectDayFilter('دوشنبه')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/calendar.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">دوشنبه</span>
+            </button>
+            <button type="button" data-filter-type="day" data-filter-name="سه شنبه"
+              onclick="selectDayFilter('سه شنبه')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/calendar.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">سه شنبه</span>
+            </button>
+            <button type="button" data-filter-type="day" data-filter-name="چهارشنبه"
+              onclick="selectDayFilter('چهارشنبه')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/calendar.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">چهارشنبه</span>
+            </button>
+            <button type="button" data-filter-type="day" data-filter-name="پنجشنبه"
+              onclick="selectDayFilter('پنجشنبه')"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/calendar.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">پنجشنبه</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <button class="text-slate-400 p-2">
         <img src="img/calendar.svg" class="w-4 h-4" alt="">
       </button>
-      <button type="button" id="openTeachersModalBtn" onclick="openTeachersModal()"
-        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
-        همه‌ی اساتید و منتور‌ها
-        <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
-      </button>
+      <div class="relative">
+        <button type="button" id="openTeachersModalBtn" onclick="openTeachersModal(event)"
+          class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg">
+          همه‌ی اساتید و منتور‌ها
+          <img src="img/arrow-down.svg" class="w-3 h-3" alt="">
+        </button>
+        <div id="teachersModalOverlay" onclick="event.stopPropagation()"
+          class="hidden absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 z-40 overflow-hidden">
+
+          <div class="px-4 py-3 border-b border-gray-100">
+            <span id="teachersModalTitle" class="text-sm font-bold text-[#2F2F2F]">
+              همه ی اساتید و منتور ها
+            </span>
+          </div>
+          <div class="divide-y divide-gray-100 max-h-72 overflow-y-auto">
+            <button type="button" data-filter-type="teacher" data-filter-name="خانم یعقوبی"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/user-add2.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">خانم یعقوبی</span>
+            </button>
+            <button type="button" data-filter-type="teacher" data-filter-name="آقای بارونچیان"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/user-add2.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">آقای بارونچیان</span>
+            </button>
+            <button type="button" data-filter-type="teacher" data-filter-name="آقای زارع"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#EAF2FF;">
+                <img src="img/user-add2.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-blue-600">آقای زارع</span>
+            </button>
+            <button type="button" data-filter-type="mentor" data-filter-name="عرفان مرادی"
+              class="w-full flex items-center justify-start gap-2.5 px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer text-right">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style="background-color:#DDF9E8;">
+                <img src="img/user-add3.svg" class="w-4 h-4" alt="">
+              </span>
+              <span class="text-xs font-semibold text-emerald-600">عرفان مرادی</span>
+            </button>
+          </div>
+        </div>
+      </div>
       <button class="text-slate-400 p-2">
         <img src="img/gif.svg" class="w-4 h-4" alt="">
       </button>
@@ -186,6 +341,13 @@
     </div>
     <div id="filterBackBarContainer" class="hidden">
       <button type="button" id="filterBackBtn" onclick="showAllClasses()"
+        class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg hover:bg-slate-100">
+        <img src="img/arrow-3.svg" class="w-3.5 h-3.5" alt="">
+        نمایش همه کلاس‌ها
+      </button>
+    </div>
+    <div id="customFilterBackBar" class="hidden">
+      <button type="button" onclick="clearCustomFilters()"
         class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg hover:bg-slate-100">
         <img src="img/arrow-3.svg" class="w-3.5 h-3.5" alt="">
         نمایش همه کلاس‌ها
@@ -557,62 +719,6 @@
     </div>
 
   </aside>
-  <div id="teachersModalOverlay" onclick="closeTeachersModal(event)"
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/35 backdrop-blur-sm px-4">
-    <div role="dialog" aria-modal="true" aria-labelledby="teachersModalTitle" onclick="event.stopPropagation()"
-      class="w-full sm:w-[90%] lg:w-[650px] max-w-[700px] max-h-[85vh] overflow-y-auto bg-white rounded-[20px] lg:rounded-3xl shadow-2xl">
-
-      <div class="flex items-center justify-between px-6 lg:px-8 pt-6 pb-5">
-        <h2 id="teachersModalTitle" class="text-2xl lg:text-3xl font-bold text-[#2F2F2F]">
-          همه ی اساتید و منتور ها
-        </h2>
-        <button type="button" onclick="closeTeachersModal()"
-          class="text-gray-400 hover:text-gray-600 text-2xl leading-none focus:outline-none focus:ring-2 focus:ring-brand-600 rounded">
-          <img src="img/x-03.svg" alt="">
-        </button>
-      </div>
-      <div class="border-b border-gray-200"></div>
-      <div class="divide-y divide-gray-100">
-        <button type="button" data-filter-type="teacher" data-filter-name="خانم یعقوبی"
-          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
-          style="min-height:64px;">
-          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-            style="background-color:#EAF2FF;">
-            <img src="img/user-add2.svg" class="w-5 h-5" alt="">
-          </span>
-          <span class="font-semibold text-blue-600">خانم یعقوبی</span>
-        </button>
-        <button type="button" data-filter-type="teacher" data-filter-name="آقای بارونچیان"
-          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
-          style="min-height:64px;">
-          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-            style="background-color:#EAF2FF;">
-            <img src="img/user-add2.svg" class="w-5 h-5" alt="">
-          </span>
-          <span class="font-semibold text-blue-600">آقای بارونچیان</span>
-        </button>
-        <button type="button" data-filter-type="teacher" data-filter-name="آقای زارع"
-          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
-          style="min-height:64px;">
-          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-            style="background-color:#EAF2FF;">
-            <img src="img/user-add2.svg" class="w-5 h-5" alt="">
-          </span>
-          <span class="font-semibold text-blue-600">آقای زارع</span>
-        </button>
-        <button type="button" data-filter-type="mentor" data-filter-name="عرفان مرادی"
-          class="w-full flex items-center justify-start gap-3 px-6 lg:px-8 py-4 hover:bg-gray-50 transition-colors cursor-pointer text-right"
-          style="min-height:64px;">
-          <span class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-            style="background-color:#DDF9E8;">
-            <img src="img/user-add3.svg" class="w-5 h-5" alt="">
-          </span>
-          <span class="font-semibold text-emerald-600">عرفان مرادی</span>
-        </button>
-      </div>
-      <div class="pb-4"></div>
-    </div>
-  </div>
   <div id="createClassModalOverlay" onclick="closeCreateClassModal(event)"
     class="fixed inset-0 z-50 hidden items-center justify-center bg-black/35 backdrop-blur-sm px-4">
     <div role="dialog" aria-modal="true" aria-labelledby="createClassModalTitle" onclick="event.stopPropagation()"

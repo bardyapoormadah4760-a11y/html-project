@@ -428,3 +428,98 @@ document.addEventListener('keydown', function (e) {
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeExcelOptionsMenu();
     });
+        var selectedDayFilter = null;   
+    var selectedClassNameFilter = null;
+    var desktopDropdownIds = ['classNameDropdownPanel', 'daysDropdownPanel', 'teachersModalOverlay'];
+
+    function closeAllDesktopDropdowns() {
+      desktopDropdownIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+    }
+
+    function toggleDesktopDropdown(id, event) {
+      if (event) event.stopPropagation();
+      var panel = document.getElementById(id);
+      if (!panel) return;
+      var willOpen = panel.classList.contains('hidden');
+      closeAllDesktopDropdowns();
+      if (willOpen) panel.classList.remove('hidden');
+    }
+
+    function openTeachersModal(event) { toggleDesktopDropdown('teachersModalOverlay', event); }
+    function closeTeachersModal() { closeAllDesktopDropdowns(); }
+
+    document.addEventListener('click', function () {
+      closeAllDesktopDropdowns();
+    });
+
+    var teachersDropdownPanelEl = document.getElementById('teachersModalOverlay');
+    if (teachersDropdownPanelEl) {
+      teachersDropdownPanelEl.addEventListener('click', function (e) {
+        if (e.target.closest('[data-filter-type]')) {
+          setTimeout(closeAllDesktopDropdowns, 0);
+        }
+      });
+    }
+
+    function selectDayFilter(day) {
+      selectedDayFilter = (day === 'all') ? null : day;
+      var label = document.getElementById('daysFilterLabel');
+      if (label) label.textContent = selectedDayFilter ? selectedDayFilter : 'همه ی روز ها';
+      closeAllDesktopDropdowns();
+      applyCustomClassFilters();
+    }
+
+    function selectClassNameFilter(name) {
+      selectedClassNameFilter = (name === 'all') ? null : name;
+      var label = document.getElementById('classNameFilterLabel');
+      if (label) label.textContent = selectedClassNameFilter ? selectedClassNameFilter : 'نام کلاس/الفبا-صعودی';
+      closeAllDesktopDropdowns();
+      applyCustomClassFilters();
+    }
+
+    function applyCustomClassFilters() {
+      var cards = document.querySelectorAll('#classGrid > div');
+      cards.forEach(function (card) {
+        var show = true;
+
+        if (selectedClassNameFilter) {
+          var titleEl = card.querySelector('h3');
+          var title = titleEl ? titleEl.textContent.trim() : '';
+          if (title !== selectedClassNameFilter) show = false;
+        }
+
+        if (show && selectedDayFilter) {
+          var badges = card.querySelectorAll('span.rounded-full.bg-slate-100');
+          var found = false;
+          badges.forEach(function (b) {
+            if (b.textContent.replace(/\s+/g, ' ').trim() === selectedDayFilter) found = true;
+          });
+          if (!found) show = false;
+        }
+
+        card.style.display = show ? '' : 'none';
+      });
+
+      var backBar = document.getElementById('customFilterBackBar');
+      if (backBar) {
+        if (selectedDayFilter || selectedClassNameFilter) backBar.classList.remove('hidden');
+        else backBar.classList.add('hidden');
+      }
+    }
+
+    function clearCustomFilters() {
+      selectedDayFilter = null;
+      selectedClassNameFilter = null;
+      var dLabel = document.getElementById('daysFilterLabel');
+      if (dLabel) dLabel.textContent = 'همه ی روز ها';
+      var cLabel = document.getElementById('classNameFilterLabel');
+      if (cLabel) cLabel.textContent = 'نام کلاس/الفبا-صعودی';
+      applyCustomClassFilters();
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAllDesktopDropdowns();
+    });
