@@ -558,34 +558,6 @@ function handleExcelOptionsClick(event) {
     });
 })();
 (function () {
-    const btnLabel = 'انتخاب فایل اکسل دانش آموزان';
-    const excelSelectBtn = Array.from(document.querySelectorAll('button')).find(
-        (btn) => btn.querySelector('p')?.textContent.trim() === btnLabel
-    );
-    if (!excelSelectBtn) return;
-
-    let selectedExcelFile = null;
-
-    const excelFileInput = document.createElement('input');
-    excelFileInput.type = 'file';
-    excelFileInput.accept = '.xlsx,.xls';
-    excelFileInput.style.display = 'none';
-    document.body.appendChild(excelFileInput);
-
-    excelSelectBtn.addEventListener('click', () => {
-        excelFileInput.value = '';
-        excelFileInput.click();
-    });
-
-    excelFileInput.addEventListener('change', () => {
-        const file = excelFileInput.files[0];
-        if (file) {
-            selectedExcelFile = file;
-            window.selectedExcelFile = file;
-        }
-    });
-})();
-(function () {
     const todayDateEl = document.getElementById('todayDateText');
     if (!todayDateEl) return;
 
