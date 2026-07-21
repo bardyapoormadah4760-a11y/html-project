@@ -388,138 +388,217 @@ document.addEventListener('keydown', function (e) {
         toggleMobileTeacherDropdown();
     }
 });
-    function toggleExcelOptionsMenu(event) {
-      if (event) event.stopPropagation();
-      const menu = document.getElementById('excelOptionsMenu');
-      const btn = document.getElementById('excelOptionsBtn');
-      if (!menu || !btn) return;
-      const isOpen = !menu.classList.contains('hidden');
-      if (isOpen) {
+function toggleExcelOptionsMenu(event) {
+    if (event) event.stopPropagation();
+    const menu = document.getElementById('excelOptionsMenu');
+    const btn = document.getElementById('excelOptionsBtn');
+    if (!menu || !btn) return;
+    const isOpen = !menu.classList.contains('hidden');
+    if (isOpen) {
         closeExcelOptionsMenu();
-      } else {
+    } else {
         menu.classList.remove('hidden');
         btn.setAttribute('aria-expanded', 'true');
-      }
     }
+}
 
-    function closeExcelOptionsMenu() {
-      const menu = document.getElementById('excelOptionsMenu');
-      const btn = document.getElementById('excelOptionsBtn');
-      if (!menu || !btn) return;
-      menu.classList.add('hidden');
-      btn.setAttribute('aria-expanded', 'false');
-    }
+function closeExcelOptionsMenu() {
+    const menu = document.getElementById('excelOptionsMenu');
+    const btn = document.getElementById('excelOptionsBtn');
+    if (!menu || !btn) return;
+    menu.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+}
 
-    function selectExcelOption(type) {
-      closeExcelOptionsMenu();
-      if (typeof openExcelModal === 'function') {
+function selectExcelOption(type) {
+    closeExcelOptionsMenu();
+    if (typeof openExcelModal === 'function') {
         openExcelModal();
-      }
     }
+}
 
-    document.addEventListener('click', function (e) {
-      const menu = document.getElementById('excelOptionsMenu');
-      const btn = document.getElementById('excelOptionsBtn');
-      if (menu && !menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+document.addEventListener('click', function (e) {
+    const menu = document.getElementById('excelOptionsMenu');
+    const btn = document.getElementById('excelOptionsBtn');
+    if (menu && !menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
         closeExcelOptionsMenu();
-      }
-    });
+    }
+});
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeExcelOptionsMenu();
-    });
-        var selectedDayFilter = null;   
-    var selectedClassNameFilter = null;
-    var desktopDropdownIds = ['classNameDropdownPanel', 'daysDropdownPanel', 'teachersModalOverlay'];
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeExcelOptionsMenu();
+});
+var selectedDayFilter = null;
+var selectedClassNameFilter = null;
+var desktopDropdownIds = ['classNameDropdownPanel', 'daysDropdownPanel', 'teachersModalOverlay'];
 
-    function closeAllDesktopDropdowns() {
-      desktopDropdownIds.forEach(function (id) {
+function closeAllDesktopDropdowns() {
+    desktopDropdownIds.forEach(function (id) {
         var el = document.getElementById(id);
         if (el) el.classList.add('hidden');
-      });
-    }
-
-    function toggleDesktopDropdown(id, event) {
-      if (event) event.stopPropagation();
-      var panel = document.getElementById(id);
-      if (!panel) return;
-      var willOpen = panel.classList.contains('hidden');
-      closeAllDesktopDropdowns();
-      if (willOpen) panel.classList.remove('hidden');
-    }
-
-    function openTeachersModal(event) { toggleDesktopDropdown('teachersModalOverlay', event); }
-    function closeTeachersModal() { closeAllDesktopDropdowns(); }
-
-    document.addEventListener('click', function () {
-      closeAllDesktopDropdowns();
     });
+}
 
-    var teachersDropdownPanelEl = document.getElementById('teachersModalOverlay');
-    if (teachersDropdownPanelEl) {
-      teachersDropdownPanelEl.addEventListener('click', function (e) {
+function toggleDesktopDropdown(id, event) {
+    if (event) event.stopPropagation();
+    var panel = document.getElementById(id);
+    if (!panel) return;
+    var willOpen = panel.classList.contains('hidden');
+    closeAllDesktopDropdowns();
+    if (willOpen) panel.classList.remove('hidden');
+}
+
+function openTeachersModal(event) { toggleDesktopDropdown('teachersModalOverlay', event); }
+function closeTeachersModal() { closeAllDesktopDropdowns(); }
+
+document.addEventListener('click', function () {
+    closeAllDesktopDropdowns();
+});
+
+var teachersDropdownPanelEl = document.getElementById('teachersModalOverlay');
+if (teachersDropdownPanelEl) {
+    teachersDropdownPanelEl.addEventListener('click', function (e) {
         if (e.target.closest('[data-filter-type]')) {
-          setTimeout(closeAllDesktopDropdowns, 0);
+            setTimeout(closeAllDesktopDropdowns, 0);
         }
-      });
-    }
+    });
+}
 
-    function selectDayFilter(day) {
-      selectedDayFilter = (day === 'all') ? null : day;
-      var label = document.getElementById('daysFilterLabel');
-      if (label) label.textContent = selectedDayFilter ? selectedDayFilter : 'همه ی روز ها';
-      closeAllDesktopDropdowns();
-      applyCustomClassFilters();
-    }
+function selectDayFilter(day) {
+    selectedDayFilter = (day === 'all') ? null : day;
+    var label = document.getElementById('daysFilterLabel');
+    if (label) label.textContent = selectedDayFilter ? selectedDayFilter : 'همه ی روز ها';
+    closeAllDesktopDropdowns();
+    applyCustomClassFilters();
+}
 
-    function selectClassNameFilter(name) {
-      selectedClassNameFilter = (name === 'all') ? null : name;
-      var label = document.getElementById('classNameFilterLabel');
-      if (label) label.textContent = selectedClassNameFilter ? selectedClassNameFilter : 'نام کلاس/الفبا-صعودی';
-      closeAllDesktopDropdowns();
-      applyCustomClassFilters();
-    }
+function selectClassNameFilter(name) {
+    selectedClassNameFilter = (name === 'all') ? null : name;
+    var label = document.getElementById('classNameFilterLabel');
+    if (label) label.textContent = selectedClassNameFilter ? selectedClassNameFilter : 'نام کلاس/الفبا-صعودی';
+    closeAllDesktopDropdowns();
+    applyCustomClassFilters();
+}
 
-    function applyCustomClassFilters() {
-      var cards = document.querySelectorAll('#classGrid > div');
-      cards.forEach(function (card) {
+function applyCustomClassFilters() {
+    var cards = document.querySelectorAll('#classGrid > div');
+    cards.forEach(function (card) {
         var show = true;
 
         if (selectedClassNameFilter) {
-          var titleEl = card.querySelector('h3');
-          var title = titleEl ? titleEl.textContent.trim() : '';
-          if (title !== selectedClassNameFilter) show = false;
+            var titleEl = card.querySelector('h3');
+            var title = titleEl ? titleEl.textContent.trim() : '';
+            if (title !== selectedClassNameFilter) show = false;
         }
 
         if (show && selectedDayFilter) {
-          var badges = card.querySelectorAll('span.rounded-full.bg-slate-100');
-          var found = false;
-          badges.forEach(function (b) {
-            if (b.textContent.replace(/\s+/g, ' ').trim() === selectedDayFilter) found = true;
-          });
-          if (!found) show = false;
+            var badges = card.querySelectorAll('span.rounded-full.bg-slate-100');
+            var found = false;
+            badges.forEach(function (b) {
+                if (b.textContent.replace(/\s+/g, ' ').trim() === selectedDayFilter) found = true;
+            });
+            if (!found) show = false;
         }
 
         card.style.display = show ? '' : 'none';
-      });
+    });
 
-      var backBar = document.getElementById('customFilterBackBar');
-      if (backBar) {
+    var backBar = document.getElementById('customFilterBackBar');
+    if (backBar) {
         if (selectedDayFilter || selectedClassNameFilter) backBar.classList.remove('hidden');
         else backBar.classList.add('hidden');
-      }
+    }
+}
+
+function clearCustomFilters() {
+    selectedDayFilter = null;
+    selectedClassNameFilter = null;
+    var dLabel = document.getElementById('daysFilterLabel');
+    if (dLabel) dLabel.textContent = 'همه ی روز ها';
+    var cLabel = document.getElementById('classNameFilterLabel');
+    if (cLabel) cLabel.textContent = 'نام کلاس/الفبا-صعودی';
+    applyCustomClassFilters();
+}
+
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAllDesktopDropdowns();
+});
+function handleExcelOptionsClick(event) {
+    if (window.matchMedia('(min-width: 1024px)').matches) {
+        if (typeof openExcelModal === 'function') openExcelModal();
+    } else if (typeof toggleExcelOptionsMenu === 'function') {
+        toggleExcelOptionsMenu(event);
+    }
+}
+
+(function () {
+    var input = document.getElementById('classSearchInput');
+    var grid = document.getElementById('classGrid');
+    var emptyState = document.getElementById('classSearchEmptyState');
+    if (!input || !grid) return;
+
+    function normalize(text) {
+        return text.replace(/\s+/g, ' ').trim().toLowerCase();
     }
 
-    function clearCustomFilters() {
-      selectedDayFilter = null;
-      selectedClassNameFilter = null;
-      var dLabel = document.getElementById('daysFilterLabel');
-      if (dLabel) dLabel.textContent = 'همه ی روز ها';
-      var cLabel = document.getElementById('classNameFilterLabel');
-      if (cLabel) cLabel.textContent = 'نام کلاس/الفبا-صعودی';
-      applyCustomClassFilters();
-    }
+    input.addEventListener('input', function () {
+        var query = normalize(input.value);
+        var cards = grid.querySelectorAll(':scope > div:not(#classSearchEmptyState)');
+        var visibleCount = 0;
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeAllDesktopDropdowns();
+        cards.forEach(function (card) {
+            var matches = query === '' || normalize(card.textContent).includes(query);
+            card.style.display = matches ? '' : 'none';
+            if (matches && !card.classList.contains('hidden')) visibleCount++;
+        });
+
+        if (emptyState) {
+            emptyState.classList.toggle('hidden', query === '' || visibleCount > 0);
+        }
     });
+})();
+(function () {
+    const btnLabel = 'انتخاب فایل اکسل دانش آموزان';
+    const excelSelectBtn = Array.from(document.querySelectorAll('button')).find(
+        (btn) => btn.querySelector('p')?.textContent.trim() === btnLabel
+    );
+    if (!excelSelectBtn) return;
+
+    let selectedExcelFile = null;
+
+    const excelFileInput = document.createElement('input');
+    excelFileInput.type = 'file';
+    excelFileInput.accept = '.xlsx,.xls';
+    excelFileInput.style.display = 'none';
+    document.body.appendChild(excelFileInput);
+
+    excelSelectBtn.addEventListener('click', () => {
+        excelFileInput.value = '';
+        excelFileInput.click();
+    });
+
+    excelFileInput.addEventListener('change', () => {
+        const file = excelFileInput.files[0];
+        if (file) {
+            selectedExcelFile = file;
+            window.selectedExcelFile = file;
+        }
+    });
+})();
+(function () {
+    const todayDateEl = document.getElementById('todayDateText');
+    if (!todayDateEl) return;
+
+    const formatter = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    const parts = formatter.formatToParts(new Date());
+    const year = parts.find((p) => p.type === 'year')?.value ?? '';
+    const month = parts.find((p) => p.type === 'month')?.value ?? '';
+    const day = parts.find((p) => p.type === 'day')?.value ?? '';
+
+    todayDateEl.textContent = `${year} ${month} ${day}`;
+})();
